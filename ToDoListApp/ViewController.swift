@@ -8,26 +8,26 @@
 import UIKit
 
 class ViewController: UIViewController {
-   var item: Item?
-   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    if sender as AnyObject? === saveButton {
-       let name = TextFieldName.text ?? ""
-       item = Item(name: name)
-     }
-    }
- 
 
-    @IBOutlet weak var saveButton: UIBarButtonItem!
+   @IBOutlet weak var saveButton: UIBarButtonItem!
    @IBOutlet weak var LabelName: UILabel!
    @IBOutlet weak var TextFieldName: UITextField!
+    
+    var item: Item?
+    
     override func viewDidLoad() {
       super.viewDidLoad()
-        // Do any additional setup after loading the view.
         if let item = item {
             TextFieldName.text = item.name
          }
-        
   }
+   
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     if sender as AnyObject? === saveButton {
+        let name = TextFieldName.text ?? ""
+        item = Item(name: name)
+      }
+     }
 
     
     @IBAction func cancel(_ sender: UIBarButtonItem) {
